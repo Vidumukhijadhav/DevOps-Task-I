@@ -19,18 +19,17 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 
 ---
 
-# 📁 Project Structure
+## 📂 Project Structure
 devops-task/
-.
 ├── app.js                  # Node.js application entry point
 ├── package.json            # Node.js dependencies
-├── package-lock.json
+├── package-lock.json       # Auto-generated dependency lock file
 ├── Dockerfile              # Docker instructions to build app image
-├── Jenkinsfile             # Jenkins pipeline script
-├── README.md
+├── Jenkinsfile             # Jenkins CI/CD pipeline script
+├── README.md               # Project documentation
 ├── deployment-proof/       # Screenshots or deployed URL proofs
 └── docs/
-    └── architecture.png    # Architecture Diagram
+    └── architecture.png    # Architecture diagram
 
 ---
 
