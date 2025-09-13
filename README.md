@@ -21,6 +21,7 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 
 # 📁 Project Structure
 devops-task/
+.
 ├── app.js                  # Node.js application entry point
 ├── package.json            # Node.js dependencies
 ├── package-lock.json
