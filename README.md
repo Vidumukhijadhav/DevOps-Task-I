@@ -29,7 +29,7 @@ devops-task/
 └── docs/
     └── architecture.png    # Architecture diagram
 
----
+
 
 ## 🧱 Architecture Overview
 
@@ -60,13 +60,12 @@ Git (Local) ───> GitHub (Remote Repo)
           AWS CloudWatch (Logs & Metrics)
 
 
----
 
 # 🧭 One-Line Flow
 
 Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
----
+
 
 # 📌 Key Workflow
 
@@ -90,9 +89,10 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - Logs and metrics stream to AWS CloudWatch
 
----
 
-# ✅ Tooling Breakdown
+
+
+### ✅ Tooling Breakdown
 # 🖥️ Local Tools
 
 - Git – Version control
@@ -105,8 +105,8 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - Terraform (optional) – Infrastructure provisioning
 
----
-# ☁️ Cloud Services
+
+### ☁️ Cloud Services
 
 - GitHub – Source code hosting
 
@@ -116,12 +116,11 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - AWS CloudWatch – Logging & monitoring
 
----
 
 ## 📊 Architecture Overview
 ![Architecture Diagram](./APP.png)
 
----
+
 #jenkins  cicd pipeline
 ![jenkins](./jenkins-projects.png)
 
@@ -131,7 +130,6 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 ![jenkins](./docker-image.png)
 
----
 ##aws
 ![AWS](./ECR.png)
 
@@ -141,7 +139,7 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 ![AWS](./ECR.png)
 
----
+
 
 ##workflow
 ##🧱 PHASE 1: Setup Source Code & GitHub
