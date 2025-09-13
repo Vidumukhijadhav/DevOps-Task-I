@@ -149,7 +149,7 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 ## Workflow
 ---
 
-🧱 PHASE 1: Setup Source Code & GitHub
+#🧱 PHASE 1: Setup Source Code & GitHub
 
 #git
 sudo apt install git
