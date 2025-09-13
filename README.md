@@ -600,7 +600,7 @@ Open in browser:
 
 ---
 
-###Access the appliction
+###Access the application
 http://<your-task-public-ip>:3000
 
 
