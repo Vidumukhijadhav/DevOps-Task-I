@@ -29,7 +29,9 @@ devops-task/
 └── docs/
     └── architecture.png    # Architecture diagram
 
+---
 
+## 🧱 Architecture Overview
 
 Developer
    |
