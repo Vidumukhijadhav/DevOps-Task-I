@@ -79,16 +79,15 @@ Git (Local) ───> GitHub (Remote Repo)
         |                           |
         +-------------+-------------+
                       |
-                Push Docker Image
+              Push Docker Image
                       v
-              AWS ECR (Image Registry)
+        AWS ECR (Image Registry)
                       |
                       v
-              AWS ECS (App Deployment)
+        AWS ECS (App Deployment)
                       |
                       v
-          AWS CloudWatch (Logs & Metrics)
-
+     AWS CloudWatch (Logs & Metrics)
 
 ---
 
