@@ -67,27 +67,33 @@ Developer
    |
    |  (Git Push)
    v
-Git (Local) ───> GitHub (Remote Repo)
-                      |
-                      |  (Webhook Trigger)
-                      v
-                Jenkins (CI/CD)
-                      |
-        +-------------+-------------+
-        |                           |
-   Build & Test               Docker Build
-        |                           |
-        +-------------+-------------+
-                      |
-              Push Docker Image
-                      v
-        AWS ECR (Image Registry)
-                      |
-                      v
-        AWS ECS (App Deployment)
-                      |
-                      v
-     AWS CloudWatch (Logs & Metrics)
+Git (Local)
+   |
+   v
+GitHub (Remote Repo)
+   |
+   |  (Webhook Trigger)
+   v
+Jenkins (CI/CD)
+   |
+   +----------------------------+
+   |                            |
+   v                            v
+Build & Test             Docker Build
+   \                            /
+    +--------------------------+
+               |
+               v
+     Push Docker Image to ECR
+               |
+               v
+    AWS ECR (Image Registry)
+               |
+               v
+     AWS ECS (App Deployment)
+               |
+               v
+AWS CloudWatch (Logs & Metrics)
 
 ---
 
