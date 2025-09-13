@@ -25,13 +25,11 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 
 ### 📁 Jenkins Projects View
 ![Jenkins Projects](./jenkins-projects.png)
-
 ### 🧪 Jenkins Pipeline Execution
 ![Jenkins Pipeline](./jenkins-pipeline.png)
 
 ### 🔐 Jenkins Credentials Configuration
 ![Jenkins Credentials](./credentials.png)
-
 ### 🐳 Jenkins Docker Image Build
 ![Docker Image](./docker-image.png)
 
@@ -50,19 +48,18 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 
 ## 📂 Project Structure
 
-```bash
 devops-task/
-├── app.js                  # Node.js application entry point
-├── package.json            # Node.js dependencies
-├── package-lock.json       # Auto-generated dependency lock file
-├── Dockerfile              # Docker instructions to build app image
-├── Jenkinsfile             # Jenkins CI/CD pipeline script
-├── README.md               # Project documentation
-├── deployment-proof/       # Screenshots or deployed URL proofs
-└── docs/
-    └── architecture.png    # Architecture diagram
+- app.js                  # Node.js application entry point
+- package.json            # Node.js dependencies
+- package-lock.json       # Auto-generated dependency lock file
+- Dockerfile              # Docker instructions to build app image
+- Jenkinsfile             # Jenkins CI/CD pipeline script
+- README.md               # Project documentation
+- deployment-proof/       # Screenshots or deployed URL proofs
+- docs/
+    architecture.png    # Architecture diagram
 
-
+---
 
 ## 🧱 Architecture Overview
 
@@ -93,14 +90,14 @@ Git (Local) ───> GitHub (Remote Repo)
           AWS CloudWatch (Logs & Metrics)
 
 
+---
 
-# 🧭 One-Line Flow
+## 🧭 One-Line Flow
 
 Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 
-
-# 📌 Key Workflow
+## 📌 Key Workflow
 
 - Developer pushes code to GitHub (dev branch)
 
@@ -123,7 +120,7 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 - Logs and metrics stream to AWS CloudWatch
 
 
-
+---
 
 ### ✅ Tooling Breakdown
 # 🖥️ Local Tools
@@ -138,6 +135,7 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - Terraform (optional) – Infrastructure provisioning
 
+---
 
 ### ☁️ Cloud Services
 
@@ -149,7 +147,7 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - AWS CloudWatch – Logging & monitoring
 
-
+---
 
 ##workflow
 ##🧱 PHASE 1: Setup Source Code & GitHub
@@ -162,6 +160,7 @@ git clone git@github.com:SwayattDrishtigochar/devops-task.git
 cd devops-task
 
 ---
+
 ##Create a new repository in github
 echo "# AWS-ECS-CI-CD-Pipeline-Project" >> README.md
 git init
@@ -208,6 +207,7 @@ sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
+---
 
 http://localhost:8080
 
@@ -223,7 +223,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ##credentials-setup
 Manage Jenkins > Credentials > System > Global credentials
 
-1. #github cred
+1. #github credentials
 Step 1: Add GitHub credentials in Jenkins
 
 #username % password(token)
@@ -246,6 +246,7 @@ Description: GitHub PAT for HTTPS repo access
 
 Click OK to save.
 
+---
 
 2. #aws credentials
 
@@ -273,6 +274,7 @@ Click the tab: Security credentials
 Scroll to: Access keys
 
 Click:
+
 ✅ “Create access key”
 
 In the prompt:
@@ -313,21 +315,21 @@ JENKINS
 #🧱 PHASE 4
 
 #How to create an ECR repository--(Instead of DockerHub)
-Option 1: Using AWS Console
+- Using AWS Console
 
-Log in to AWS Management Console
+- Log in to AWS Management Console
 
-Go to Elastic Container Registry service.
+- Go to Elastic Container Registry service.
 
-Click Create repository.
+- Click Create repository.
 
-Enter a repository name, e.g., your-nodejs-app.
+- Enter a repository name, e.g., your-nodejs-app.
 
-Choose other settings as default (or adjust if needed).
+- Choose other settings as default (or adjust if needed).
 
-Click Create repository.
+- Click Create repository.
 
-Note the Repository URI — you'll need this in your Jenkins pipeline.
+- Note the Repository URI — you'll need this in your Jenkins pipeline.
 
 ---
 
@@ -349,6 +351,7 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 
 ---
+
 #sudo nano package.json
 {
   "name": "logo-server",
@@ -364,6 +367,7 @@ CMD ["node", "app.js"]
 }
 
 ---
+
 #sudo nano jenkinsfile
 
 pipeline {
@@ -429,7 +433,7 @@ pipeline {
 
 ---
 
-#install aws cli on local--(optional) 
+#Install aws cli on local--(optional) 
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 Install AWS CLI v2 on Ubuntu
 sudo apt update
@@ -441,7 +445,7 @@ sudo ./aws/install
 
 aws --version
 
-
+---
 
 #git-local
 git add .
@@ -470,8 +474,9 @@ View Console Output
 
 ##once done pipeline  build after sucess
 
+---
 
-##verify
+##Verify the image
 👉 AWS Console → ECR → Your Repository → Images
 ✔️ Make sure your image is there, e.g., nodejs-app:5
 
@@ -486,82 +491,84 @@ task
 IAM-ROLES-
 service
 
+
 #✅ STEP 1: Create ECS Cluster
 
-Go to ECS Console → Clusters
+- Go to ECS Console → Clusters
 
-Click Create Cluster
+- Click Create Cluster
 
-Choose: "Networking only" (Fargate)
+- Choose: "Networking only" (Fargate)
 
-Cluster Name: nodejs-cluster
+- Cluster Name: nodejs-cluster
 
-Leave everything else default (it will create a new VPC, subnets, etc.)
+- Leave everything else default (it will create a new VPC, subnets, etc.)
 
-Click Create
+- Click Create
 
 #✅ STEP 2: Create Task Definition
 
-Go to ECS Console → Task Definitions → Create new
+- Go to ECS Console → Task Definitions → Create new
 
-Choose: Fargate
+- Choose: Fargate
 
 Fill in:
 
-Task Definition Name: nodejs-task
+- Task Definition Name: nodejs-task
 
-Task Role: ecsTaskExecutionRole
+- Task Role: ecsTaskExecutionRole
 
-Requires compatibilities: FARGATE
+- Requires compatibilities: FARGATE
 
 CPU/Memory: 256 vCPU / 512 MiB (or higher if needed)
 
-Scroll to Container Definitions:
+- Scroll to Container Definitions:
 
-Click Add container
+- Click Add container
 
-Container name: nodejs-app
+- Container name: nodejs-app
 
-Image URI:
+- Image URI:
 789501569955.dkr.ecr.us-east-1.amazonaws.com/nodejs-app:5
 
-Port mappings:
+- Port mappings:
 
-Container Port: 3000 (or whatever your app uses)
+- Container Port: 3000 (or whatever your app uses)
 
-Click Add
+- Click Add
 
 Click Create
 
+
 #✅ STEP 3: Create ECS Service
 
-Go to ECS Console → Clusters → nodejs-cluster
+- Go to ECS Console → Clusters → nodejs-cluster
 
-Click Create → Service
+- Click Create → Service
 
-Fill in:
+- Fill in:
 
-Launch Type: FARGATE
+- Launch Type: FARGATE
 
-Task Definition: nodejs-task
+- Task Definition: nodejs-task
 
-Revision: latest
+- Revision: latest
 
-Service name: nodejs-service
+- Service name: nodejs-service
 
-Number of tasks: 1
+- Number of tasks: 1
 
-Networking Section:
+- Networking Section:
 
-VPC: choose default (or the one ECS created)
+- VPC: choose default (or the one ECS created)
 
-Subnets: select at least two public subnets
+- Subnets: select at least two public subnets
 
-Security group:
+- Security group:
 
-Either create a new one or select existing
+- Either create a new one or select existing
 
-Add an inbound rule:
+- Add an inbound rule:
 
 Type: HTTP or Custom TCP
 
@@ -572,6 +579,7 @@ Source: 0.0.0.0/0 (for public access)
 Auto-assign public IP: ENABLED ✅
 
 Click Create Service
+
 
 #✅ STEP 4: Test Your App
 
@@ -587,7 +595,7 @@ Open in browser:
 
 ---
 
-###output
+###Access the appliction
 http://<your-task-public-ip>:3000
 
 
