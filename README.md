@@ -1,25 +1,25 @@
 # 🚀 AWS-ECS-CI-CD-Pipeline-Project
 
 This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, and AWS ECS to automate the build, test, containerization, and deployment of a Node.js application.
+---
 
+## 🛠️  Technologies Used
 
-#🛠️ Technologies Used
+- 🐙 Git + GitHub — Source control and versioning
 
-🐙 Git + GitHub — Source control and versioning
+- 🔧 Jenkins — CI/CD automation
 
-🔧 Jenkins — CI/CD automation
+- 🐳 Docker — Containerization of the Node.js app
 
-🐳 Docker — Containerization of the Node.js app
+- 📦 Amazon ECR — Docker image registry
 
-📦 Amazon ECR — Docker image registry
+- 🚢 Amazon ECS (Fargate) — Container orchestration
 
-🚢 Amazon ECS (Fargate) — Container orchestration
+- 📊 AWS CloudWatch — Monitoring and centralized logging
 
-📊 AWS CloudWatch — Monitoring and centralized logging
+---
 
-
-
-📁 Project Structure
+# 📁 Project Structure
 devops-task/
 ├── app.js                  # Node.js application entry point
 ├── package.json            # Node.js dependencies
@@ -31,8 +31,9 @@ devops-task/
 └── docs/
     └── architecture.png    # Architecture Diagram
 
+---
 
-🧱 Architecture Overview
+#🧱 Architecture Overview
 Developer
    |
    |  (Git Push)
@@ -59,72 +60,88 @@ Git (Local) ───> GitHub (Remote Repo)
                       v
           AWS CloudWatch (Logs & Metrics)
 
+---
 
-
-🧭 One-Line Flow
+# 🧭 One-Line Flow
 
 Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
+---
 
-📌 Key Workflow
+# 📌 Key Workflow
 
-Developer pushes code to GitHub (dev branch)
+- Developer pushes code to GitHub (dev branch)
 
-GitHub Webhook triggers Jenkins job
+- GitHub Webhook triggers Jenkins job
 
-Jenkins performs:
+- Jenkins performs:
 
-Git checkout
+- Git checkout
 
-Dependency install & test
+- Dependency install & test
 
-Docker image build
+- Docker image build
 
-Push image to Amazon ECR
+- Push image to Amazon ECR
 
-Deploy to Amazon ECS (Fargate)
+- Deploy to Amazon ECS (Fargate)
 
-Application runs inside ECS container
+- Application runs inside ECS container
 
-Logs and metrics stream to AWS CloudWatch
+- Logs and metrics stream to AWS CloudWatch
 
+---
 
-✅ Tooling Breakdown
-🖥️ Local Tools
+# ✅ Tooling Breakdown
+# 🖥️ Local Tools
 
-Git – Version control
+- Git – Version control
 
-Jenkins – CI/CD pipeline runner (self-hosted)
+- Jenkins – CI/CD pipeline runner (self-hosted)
 
-Node.js – Runtime for app build/test
+- Node.js – Runtime for app build/test
 
-Docker – Container builder
+- Docker – Container builder
 
-Terraform (optional) – Infrastructure provisioning
+- Terraform (optional) – Infrastructure provisioning
 
-☁️ Cloud Services
+---
+# ☁️ Cloud Services
 
-GitHub – Source code hosting
+- GitHub – Source code hosting
 
-Amazon ECR – Docker image registry
+- Amazon ECR – Docker image registry
 
-Amazon ECS (Fargate) – Container deployment
+- Amazon ECS (Fargate) – Container deployment
 
-AWS CloudWatch – Logging & monitoring
+- AWS CloudWatch – Logging & monitoring
 
+---
+
+## 📊 Architecture Overview
 ![Architecture Diagram](./APP.png)
 
+---
 #jenkins  cicd pipeline
 ![jenkins](./jenkins-projects.png)
+
 ![jenkins](./jenkins-pipeline.png)
+
 ![jenkins](./credentials.png)
+
 ![jenkins](./docker-image.png)
+
+---
+##aws
 ![AWS](./ECR.png)
+
 ![AWS](./ECR-IMAGE.png)
+
 ![AWS](./ECS.png)
+
 ![AWS](./ECR.png)
 
-
+---
 
 ##workflow
 ##🧱 PHASE 1: Setup Source Code & GitHub
@@ -136,7 +153,7 @@ git --version
 git clone git@github.com:SwayattDrishtigochar/devops-task.git
 cd devops-task
 
-
+---
 ##Create a new repository in github
 echo "# AWS-ECS-CI-CD-Pipeline-Project" >> README.md
 git init
@@ -149,13 +166,13 @@ git push -u origin main
 git checkout -b dev
 git push origin dev
 
-
+---
 
 ###🧱 PHASE 2
 #install docker
 https://docs.docker.com/engine/install/ubuntu/
 
-
+---
 
 #🧱 PHASE 3
 ##✅Install Jenkins on Ubuntu (or EC2)
@@ -188,11 +205,12 @@ http://localhost:8080
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-
+---
 
 #plugins-setup
 #Install plugins: Git, Docker, Pipeline, AWS Credentials
 
+---
 
 ##credentials-setup
 Manage Jenkins > Credentials > System > Global credentials
@@ -268,19 +286,21 @@ Secret access key (only shown once — download it now!)
 Save the keys in a safe place (e.g. password manager or .env file locally for testing)
 Go to Jenkins → Manage Jenkins → Credentials → System → Global credentials (unrestricted).
 JENKINS
+
+
 ----------------------------------------------------------------------------------------
 | Field                 | What to enter                                                |
 | --------------------- | ------------------------------------------------------------ |
 | **Kind**              | AWS Credentials                                              |
 | **Scope**             | Global (default is fine)                                     |
 | **ID**                | `aws-creds` (or any unique name you'll remember)             |
-| **Access Key ID**     | `YOUR_ACCESS_KEY_ID`                                       |
-| **Secret Access Key** | `YOUR_SECRET_ACCESS_KEY`                   |
+| **Access Key ID**     | `YOUR_ACCESS_KEY_ID`                                         |
+| **Secret Access Key** | `YOUR_SECRET_ACCESS_KEY`                                     |
 | **Description**       | `AWS creds for Jenkins CI/CD`                                |
 | **IAM Role Support**  | Leave unchecked unless you use IAM Roles with Jenkins agents |
 ----------------------------------------------------------------------------------------
 
-
+---
 
 #🧱 PHASE 4
 
@@ -301,7 +321,7 @@ Click Create repository.
 
 Note the Repository URI — you'll need this in your Jenkins pipeline.
 
-
+---
 
 #🧱 PHASE 5
 ##create a dockerfile & jenkinsfile locally and push into github
@@ -320,7 +340,7 @@ COPY . .
 EXPOSE 3000
 CMD ["node", "app.js"]
 
-
+---
 #sudo nano package.json
 {
   "name": "logo-server",
@@ -335,7 +355,7 @@ CMD ["node", "app.js"]
   }
 }
 
-
+---
 #sudo nano jenkinsfile
 
 pipeline {
@@ -399,6 +419,7 @@ pipeline {
 }
 
 
+---
 
 #install aws cli on local--(optional) 
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
@@ -447,7 +468,7 @@ View Console Output
 ✔️ Make sure your image is there, e.g., nodejs-app:5
 
 
-
+---
 
 ###🧱 PHASE 6
 #🏗️ ✅ ECS Deployment — Step-by-Step Guide
@@ -556,12 +577,13 @@ Look for Public IP under ENI details
 
 Open in browser:
 
+---
 
 ###output
 http://<your-task-public-ip>:3000
 
 
-
+---
 
 ## 🔗 Connect with Me
 
