@@ -92,6 +92,7 @@ devops-task/
 
 Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
+---
 
 ## 📌 Key Workflow
 
@@ -145,7 +146,7 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 ---
 
-##workflow
+## Workflow
 ##🧱 PHASE 1: Setup Source Code & GitHub
 
 #git
@@ -158,6 +159,7 @@ cd devops-task
 ---
 
 ##Create a new repository in github
+
 echo "# AWS-ECS-CI-CD-Pipeline-Project" >> README.md
 git init
 git add README.md
