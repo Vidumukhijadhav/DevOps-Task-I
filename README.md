@@ -15,6 +15,39 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 
 ---
 
+## 📊 Architecture Overview
+
+![Architecture Diagram](./APP.png)
+
+---
+
+## 🛠️ Jenkins CI/CD Pipeline
+
+### 📁 Jenkins Projects View
+![Jenkins Projects](./jenkins-projects.png)
+
+### 🧪 Jenkins Pipeline Execution
+![Jenkins Pipeline](./jenkins-pipeline.png)
+
+### 🔐 Jenkins Credentials Configuration
+![Jenkins Credentials](./credentials.png)
+
+### 🐳 Jenkins Docker Image Build
+![Docker Image](./docker-image.png)
+
+---
+
+## ☁️ AWS ECR & ECS
+
+### 📦 Amazon ECR Repositories
+![ECR Repositories](./ECR.png)
+
+### 🖼️ ECR Image Pushed
+![ECR Image](./ECR-IMAGE.png)
+
+
+---
+
 ## 📂 Project Structure
 
 ```bash
@@ -115,37 +148,6 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 - Amazon ECS (Fargate) – Container deployment
 
 - AWS CloudWatch – Logging & monitoring
-
-
-## 📊 Architecture Overview
-
-![Architecture Diagram](./APP.png)
-
----
-
-## 🛠️ Jenkins CI/CD Pipeline
-
-### 📁 Jenkins Projects View
-![Jenkins Projects](./jenkins-projects.png)
-
-### 🧪 Jenkins Pipeline Execution
-![Jenkins Pipeline](./jenkins-pipeline.png)
-
-### 🔐 Jenkins Credentials Configuration
-![Jenkins Credentials](./credentials.png)
-
-### 🐳 Jenkins Docker Image Build
-![Docker Image](./docker-image.png)
-
----
-
-## ☁️ AWS ECR & ECS
-
-### 📦 Amazon ECR Repositories
-![ECR Repositories](./ECR.png)
-
-### 🖼️ ECR Image Pushed
-![ECR Image](./ECR-IMAGE.png)
 
 
 
