@@ -2,12 +2,20 @@
 
 This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, and AWS ECS to automate the build, test, containerization, and deployment of a Node.js application.
 
-**Source Control**: Git + GitHub 
-**CI/CD**: Jenkins 
-**Containerization**: Docker 
-**Image Registry**: Amazon ECR 
-**Container Orchestration**: Amazon ECS (Fargate) 
-**Monitoring & Logs**: AWS CloudWatch
+🛠️ Technologies Used
+
+🐙 Git + GitHub — Source control and versioning
+
+🔧 Jenkins — CI/CD automation
+
+🐳 Docker — Containerization of the Node.js app
+
+📦 Amazon ECR — Docker image registry
+
+🚢 Amazon ECS (Fargate) — Container orchestration
+
+📊 AWS CloudWatch — Monitoring and centralized logging
+
 
 
 📁 Project Structure
