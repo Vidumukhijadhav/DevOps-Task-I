@@ -10,7 +10,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'dev', url: 'git@github.com:MaheshBabu-DevOps/AWS-ECS-CI-CD-Pipeline-Project.git'
+                git branch: 'dev',
+                    url: 'https://github.com/MaheshBabu-DevOps/AWS-ECS-CI-CD-Pipeline-Project.git',
+                    credentialsId: 'github-https-creds'  // <--- your Jenkins credential ID for PAT
             }
         }
 
