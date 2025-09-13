@@ -1,98 +1,113 @@
-#🚀 AWS-ECS-CI-CD-Pipeline-Project
+🚀 AWS-ECS-CI-CD-Pipeline-Project
 
-This project sets up a complete CI/CD pipeline using Jenkins to automate the build, test, containerization, and deployment of a Node.js application. The pipeline integrates with GitHub for source code management and uses Docker to package the application into containers. The Docker images are pushed to AWS Elastic Container Registry (ECR) and deployed to AWS Elastic Container Service (ECS). Monitoring and logging are managed through AWS CloudWatch, ensuring full visibility into application performance and health.
+This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, and AWS ECS to automate the build, test, containerization, and deployment of a Node.js application.
 
 
-#📁 Project Structure
+Source Control: Git + GitHub
+
+CI/CD: Jenkins
+
+Containerization: Docker
+
+Image Registry: Amazon ECR
+
+Container Orchestration: Amazon ECS (Fargate)
+
+Monitoring & Logs: AWS CloudWatch
+
+
+📁 Project Structure
 devops-task/
-├── app.js
-├── package.json
+├── app.js                  # Node.js application entry point
+├── package.json            # Node.js dependencies
 ├── package-lock.json
-├── Dockerfile
-├── Jenkinsfile
+├── Dockerfile              # Docker instructions to build app image
+├── Jenkinsfile             # Jenkins pipeline script
 ├── README.md
-├── deployment-proof/   # Add screenshots or public URL
+├── deployment-proof/       # Screenshots or deployed URL proofs
 └── docs/
-    └── architecture.png (Architecture Diagram)
+    └── architecture.png    # Architecture Diagram
 
 
-##🧱 Minimal Architecture Overview
+🧱 Architecture Overview
 Developer
    |
-   | (Git push)
+   |  (Git Push)
    v
-Git (Local) ───> GitHub (Cloud Repo)
-                       |
-                       | (Webhook trigger)
-                       v
-               Jenkins (CI/CD Tool)
-                       |
-        +--------------+--------------+
-        |                             |
-  Build & Test                  Docker Build
-        |                             |
-        +--------------+--------------+
-                       |
-               Push Docker Image
-                       v
+Git (Local) ───> GitHub (Remote Repo)
+                      |
+                      |  (Webhook Trigger)
+                      v
+                Jenkins (CI/CD)
+                      |
+        +-------------+-------------+
+        |                           |
+   Build & Test               Docker Build
+        |                           |
+        +-------------+-------------+
+                      |
+                Push Docker Image
+                      v
               AWS ECR (Image Registry)
-                       |
-                       v
+                      |
+                      v
               AWS ECS (App Deployment)
-                       |
-                       v
-         AWS CloudWatch (Logs & Monitoring)
+                      |
+                      v
+          AWS CloudWatch (Logs & Metrics)
 
 
-#One-LIne
-Developer → Git (local) → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
-###📌 Key Flow:
+🧭 One-Line Flow
 
-Dev pushes code to GitHub (version control)
-
-GitHub webhook triggers Jenkins
-
-Jenkins:
-
-Pulls code
-
-Runs tests
-
-Builds Docker image
-
-Pushes image to ECR
-
-Deploys image to ECS
-
-ECS runs container
-
-Logs are streamed to CloudWatch
+Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 
-####✅Local vs Cloud-Tools
+📌 Key Workflow
 
-#local
-Git (CLI on your machine)
+Developer pushes code to GitHub (dev branch)
 
-Jenkins (self-hosted)
+GitHub Webhook triggers Jenkins job
 
-Node.js (via Jenkins)
+Jenkins performs:
 
-Docker (builds image)
+Git checkout
 
-Terraform (executes infra provisioning)
+Dependency install & test
 
-#Cloud Tools
+Docker image build
 
-GitHub (code host)
+Push image to Amazon ECR
 
-DockerHub / AWS ECR (image storage)
+Deploy to Amazon ECS (Fargate)
 
-AWS ECS (deployment)
+Application runs inside ECS container
 
-AWS CloudWatch (logs & metrics)
+Logs and metrics stream to AWS CloudWatch
 
+
+✅ Tooling Breakdown
+🖥️ Local Tools
+
+Git – Version control
+
+Jenkins – CI/CD pipeline runner (self-hosted)
+
+Node.js – Runtime for app build/test
+
+Docker – Container builder
+
+Terraform (optional) – Infrastructure provisioning
+
+☁️ Cloud Services
+
+GitHub – Source code hosting
+
+Amazon ECR – Docker image registry
+
+Amazon ECS (Fargate) – Container deployment
+
+AWS CloudWatch – Logging & monitoring
 
 ![Architecture Diagram](./APP.png)
 
