@@ -63,37 +63,28 @@ devops-task/
 
 ## 🧱 Architecture Overview
 
-Developer
-   |
-   |  (Git Push)
-   v
-Git (Local)
-   |
-   v
-GitHub (Remote Repo)
-   |
-   |  (Webhook Trigger)
-   v
-Jenkins (CI/CD)
-   |
-   +----------------------------+
-   |                            |
-   v                            v
-Build & Test             Docker Build
-   \                            /
-    +--------------------------+
-               |
-               v
-     Push Docker Image to ECR
-               |
-               v
-    AWS ECR (Image Registry)
-               |
-               v
-     AWS ECS (App Deployment)
-               |
-               v
-AWS CloudWatch (Logs & Metrics)
+- Developer pushes code to the local Git repository.
+
+- The code is pushed to GitHub (Remote Repository).
+
+- A Webhook triggers the Jenkins CI/CD pipeline.
+
+- Jenkins performs:
+
+- Git checkout
+
+- Install dependencies
+
+- Run tests
+
+- Build Docker image
+
+- The Docker image is pushed to Amazon ECR (Elastic Container Registry).
+
+- Amazon ECS (Fargate) pulls the image and deploys the application.
+
+- AWS CloudWatch collects logs and metrics for monitoring.
+
 
 ---
 
