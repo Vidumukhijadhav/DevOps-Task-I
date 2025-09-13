@@ -58,4 +58,4 @@ You will see the Swayatt logo displayed in your browser.
 - **Framework**: Express.js
 - **Port**: 3000
 - **Endpoint**: GET `/` - serves the logo image
-- **File served**: `logoswayatt.png`
+- **File served**: `logoswayatt.png`# AWS-ECS-CI-CD-Pipeline-Project
