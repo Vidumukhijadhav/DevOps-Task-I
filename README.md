@@ -147,6 +147,8 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 ---
 
 ## Workflow
+---
+
 🧱 PHASE 1: Setup Source Code & GitHub
 
 #git
@@ -174,13 +176,14 @@ git push origin dev
 ---
 
 
-# 🧱 PHASE 2
+🧱 PHASE 2
 #install docker
 https://docs.docker.com/engine/install/ubuntu/
 
 ---
 
-#🧱 PHASE 3
+
+🧱 PHASE 3
 ##✅Install Jenkins on Ubuntu (or EC2)
 
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
@@ -311,7 +314,8 @@ JENKINS
 
 ---
 
-#🧱 PHASE 4
+
+🧱 PHASE 4
 
 #How to create an ECR repository--(Instead of DockerHub)
 - Using AWS Console
@@ -332,7 +336,8 @@ JENKINS
 
 ---
 
-#🧱 PHASE 5
+
+🧱 PHASE 5
 ##create a dockerfile & jenkinsfile locally and push into github
 
 #sudo nano Dockerfile
@@ -482,7 +487,8 @@ View Console Output
 
 ---
 
-###🧱 PHASE 6
+
+🧱 PHASE 6
 #🏗️ ✅ ECS Deployment — Step-by-Step Guide
 ECS
 cluster
