@@ -21,7 +21,6 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 ---
 
 # 📂 Project Structure
-
 ```markdown
 
 ```bash
@@ -39,7 +38,7 @@ devops-task/
 ---
 
 
-#🧱 Architecture Overview
+# 🧱 Architecture Overview
 
 Developer
    |
