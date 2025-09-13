@@ -6,12 +6,12 @@ This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, a
 
 ## 🛠️ Technologies Used
 
-- 🐙 **Git + GitHub** — Source control and versioning  
-- 🔧 **Jenkins** — CI/CD automation  
-- 🐳 **Docker** — Containerization of the Node.js app  
-- 📦 **Amazon ECR** — Docker image registry  
-- 🚢 **Amazon ECS (Fargate)** — Container orchestration  
-- 📊 **AWS CloudWatch** — Monitoring and centralized logging  
+- 🐙 **Git + GitHub** — Source control and versioning 
+- 🔧 **Jenkins** — CI/CD automation 
+- 🐳 **Docker** — Containerization of the Node.js app 
+- 📦 **Amazon ECR** — Docker image registry 
+- 🚢 **Amazon ECS (Fargate)** — Container orchestration 
+- 📊 **AWS CloudWatch** — Monitoring and centralized logging 
 
 ---
 
@@ -118,26 +118,34 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 
 ## 📊 Architecture Overview
+
 ![Architecture Diagram](./APP.png)
 
+---
 
-#jenkins  cicd pipeline
-![jenkins](./jenkins-projects.png)
+## 🛠️ Jenkins CI/CD Pipeline
 
-![jenkins](./jenkins-pipeline.png)
+### 📁 Jenkins Projects View
+![Jenkins Projects](./jenkins-projects.png)
 
-![jenkins](./credentials.png)
+### 🧪 Jenkins Pipeline Execution
+![Jenkins Pipeline](./jenkins-pipeline.png)
 
-![jenkins](./docker-image.png)
+### 🔐 Jenkins Credentials Configuration
+![Jenkins Credentials](./credentials.png)
 
-##aws
-![AWS](./ECR.png)
+### 🐳 Jenkins Docker Image Build
+![Docker Image](./docker-image.png)
 
-![AWS](./ECR-IMAGE.png)
+---
 
-![AWS](./ECS.png)
+## ☁️ AWS ECR & ECS
 
-![AWS](./ECR.png)
+### 📦 Amazon ECR Repositories
+![ECR Repositories](./ECR.png)
+
+### 🖼️ ECR Image Pushed
+![ECR Image](./ECR-IMAGE.png)
 
 
 
