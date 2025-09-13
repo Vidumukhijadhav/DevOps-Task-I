@@ -1,4 +1,4 @@
-🚀 AWS-ECS-CI-CD-Pipeline-Project
+# 🚀 AWS-ECS-CI-CD-Pipeline-Project
 
 
 This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, and AWS ECS to automate the build, test, containerization, and deployment of a Node.js application.
