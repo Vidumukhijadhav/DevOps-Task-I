@@ -37,7 +37,6 @@ devops-task/
 
 ---
 
-
 # 🧱 Architecture Overview
 
 Developer
