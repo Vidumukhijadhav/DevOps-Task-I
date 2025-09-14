@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-east-1'
-        ECR_REPO = '789501569955.dkr.ecr.us-east-1.amazonaws.com/nodejs-app'
+        ECR_REPO = '340695329634.dkr.ecr.ap-south-1.amazonaws.com/nodejs-app'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
 
         // Inject AWS credentials from Jenkins
@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'dev', credentialsId: 'github-https-creds', url: 'https://github.com/MaheshBabu-DevOps/AWS-ECS-CI-CD-Pipeline-Project.git'
+                git branch: 'dev', credentialsId: 'github-https-creds', url: 'https://github.com/Vidumukhijadhav/CI-CD-Pipeline.git'
             }
         }
 
