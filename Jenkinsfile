@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'us-east-1'
-        ECR_REPO = '340695329634.dkr.ecr.ap-south-1.amazonaws.com/nodejs-app'
-        IMAGE_TAG = "${env.BUILD_NUMBER}"
+        AWS_REGION   = 'ap-south-1'
+        ECR_REGISTRY = '340695329634.dkr.ecr.ap-south-1.amazonaws.com'
+        IMAGE_NAME   = 'nodejs-app'
+        IMAGE_TAG    = "${env.BUILD_NUMBER}"
 
-        // Inject AWS credentials from Jenkins
-        AWS_ACCESS_KEY_ID = credentials('aws-creds')
+        // AWS credentials from Jenkins
+        AWS_ACCESS_KEY_ID     = credentials('aws-creds')
         AWS_SECRET_ACCESS_KEY = credentials('aws-creds')
     }
 
@@ -27,25 +28,25 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh "docker build -t $ECR_REPO:$IMAGE_TAG ."
+                sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
             }
         }
 
-        stage('ECR Login') {
+        stage('ECR Login & Push') {
             steps {
                 sh '''
+                    # Configure AWS CLI
                     aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
                     aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
                     aws configure set region $AWS_REGION
 
-                    aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
-                '''
-            }
-        }
+                    # Login to ECR (registry only)
+                    aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
 
-        stage('Push to ECR') {
-            steps {
-                sh "docker push $ECR_REPO:$IMAGE_TAG"
+                    # Tag and push Docker image
+                    docker tag $IMAGE_NAME:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
+                    docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
+                '''
             }
         }
     }
