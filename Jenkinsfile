@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'dev', credentialsId: 'github-https-creds', url: 'https://github.com/Vidumukhijadhav/CI-CD-Pipeline.git'
+                git branch: 'dev', credentialsId: 'github-https-creds', url: 'https://github.com/Vidumukhijadhav/DevOps-Task-I.git'
             }
         }
 
