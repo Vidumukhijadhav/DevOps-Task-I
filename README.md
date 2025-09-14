@@ -1,52 +1,20 @@
-# 🚀 AWS-ECS-CI-CD-Pipeline-Project
+# 🚀 CI/CD-Pipeline-Project with AWS
 
-This project sets up a complete CI/CD pipeline using Jenkins, Docker, AWS ECR, and AWS ECS to automate the build, test, containerization, and deployment of a Node.js application.
-
----
-
-## 🛠️ Technologies Used
-
-- 🐙 **Git + GitHub** — Source control and versioning 
-- 🔧 **Jenkins** — CI/CD automation 
-- 🐳 **Docker** — Containerization of the Node.js app 
-- 📦 **Amazon ECR** — Docker image registry 
-- 🚢 **Amazon ECS (Fargate)** — Container orchestration 
-- 📊 **AWS CloudWatch** — Monitoring and centralized logging 
-
----
-
-## 📊 Architecture Overview
-
-![Architecture Diagram](./APP.png)
-
----
-
-## 🛠️ Jenkins CI/CD Pipeline
-
-### 📁 Jenkins Projects View
-![Jenkins Projects](./jenkins-projects.png)
-### 🧪 Jenkins Pipeline Execution
-![Jenkins Pipeline](./jenkins-pipeline.png)
-
-### 🔐 Jenkins Credentials Configuration
-![Jenkins Credentials](./credentials.png)
-### 🐳 Jenkins Docker Image Build
-![Docker Image](./docker-image.png)
-
----
-
-## ☁️ AWS ECR & ECS
-
-### 📦 Amazon ECR Repositories
-![ECR Repositories](./ECR.png)
-
-### 🖼️ ECR Image Pushed
-![ECR Image](./ECR-IMAGE.png)
+This project sets up a complete CI/CD pipeline using Git-GitHub, Jenkins, Docker, AWS-ECR and AWS-ECS to automate the build, test, containerization, and deployment of a Node.js application.
 
 
----
+🛠️ Technologies Used
 
-## 📂 Project Structure
+- 🐙 Git + GitHub — Source control and versioning 
+- 🔧 Jenkins — CI/CD automation 
+- 🐳 Docker — Containerization of the Node.js app 
+- 📦 Amazon ECR — Docker image registry 
+- 🚢 Amazon ECS (Fargate) — Container orchestration 
+- 📊 AWS CloudWatch — Monitoring and centralized logging 
+
+
+
+📂 Project Structure
 
 devops-task/
 - app.js                  # Node.js application entry point
@@ -56,45 +24,9 @@ devops-task/
 - Jenkinsfile             # Jenkins CI/CD pipeline script
 - README.md               # Project documentation
 - deployment-proof/       # Screenshots or deployed URL proofs
-- docs/
-    architecture.png    # Architecture diagram
-
----
-
-## 🧱 Architecture Overview
-
-- Developer pushes code to the local Git repository.
-
-- The code is pushed to GitHub (Remote Repository).
-
-- A Webhook triggers the Jenkins CI/CD pipeline.
-
-- Jenkins performs:
-
-- Git checkout
-
-- Install dependencies
-
-- Run tests
-
-- Build Docker image
-
-- The Docker image is pushed to Amazon ECR (Elastic Container Registry).
-
-- Amazon ECS (Fargate) pulls the image and deploys the application.
-
-- AWS CloudWatch collects logs and metrics for monitoring.
 
 
----
-
-## 🧭 One-Line Flow
-
-Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
-
----
-
-## 📌 Key Workflow
+📌 Key Workflow
 
 - Developer pushes code to GitHub (dev branch)
 
@@ -119,8 +51,8 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 ---
 
-### ✅ Tooling Breakdown
-# 🖥️ Local Tools
+ ✅ Tooling Breakdown
+ 🖥️ Local Tools
 
 - Git – Version control
 
@@ -130,11 +62,8 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - Docker – Container builder
 
-- Terraform (optional) – Infrastructure provisioning
 
----
-
-### ☁️ Cloud Services
+☁️ Cloud Services
 
 - GitHub – Source code hosting
 
@@ -144,10 +73,8 @@ Developer → GitHub → Jenkins → Docker → ECR → ECS → CloudWatch
 
 - AWS CloudWatch – Logging & monitoring
 
----
 
-## Workflow
----
+ Workflow
 
 🧱 PHASE 1: Setup Source Code & GitHub
 
@@ -158,8 +85,6 @@ git --version
 git clone git@github.com:SwayattDrishtigochar/devops-task.git
 cd devops-task
 
----
-
 ##Create a new repository in github
 
 echo "# AWS-ECS-CI-CD-Pipeline-Project" >> README.md
@@ -167,24 +92,19 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin git@github.com:MaheshBabu-DevOps/AWS-ECS-CI-CD-Pipeline-Project.git
+git remote add origin https://github.com/Vidumukhijadhav/DevOps-Task-I.git
 git push -u origin main
 
 git checkout -b dev
 git push origin dev
-
----
 
 
 🧱 PHASE 2
 #install docker
 https://docs.docker.com/engine/install/ubuntu/
 
----
-
-
 🧱 PHASE 3
-##✅Install Jenkins on Ubuntu (or EC2)
+✅Install Jenkins on Ubuntu (or EC2)
 
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
@@ -218,17 +138,15 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ---
 
 #plugins-setup
-#Install plugins: Git, Docker, Pipeline, AWS Credentials
-
----
+Install plugins: Git, Docker, Pipeline, AWS-Credentials, AWS-EC2, AWS-ECS, NodeJs, Pipeliline View, Blue Oceans,etc
 
 ##credentials-setup
 Manage Jenkins > Credentials > System > Global credentials
 
-1. #github credentials
+1. github credentials
 Step 1: Add GitHub credentials in Jenkins
 
-#username % password(token)
+username % password(token)
 
 Go to Jenkins → Manage Jenkins → Credentials → System → Global credentials (unrestricted).
 
@@ -250,7 +168,7 @@ Click OK to save.
 
 ---
 
-2. #aws credentials
+2. aws credentials
 
 #create-IAM for ecs and ecr
 ✅ Step-by-Step: Create Access Key for Existing IAM User
@@ -312,12 +230,10 @@ JENKINS
 | **IAM Role Support**  | Leave unchecked unless you use IAM Roles with Jenkins agents |
 ----------------------------------------------------------------------------------------
 
----
-
 
 🧱 PHASE 4
 
-#How to create an ECR repository--(Instead of DockerHub)
+How to create an ECR repository--(Instead of DockerHub)
 - Using AWS Console
 
 - Log in to AWS Management Console
@@ -338,7 +254,7 @@ JENKINS
 
 
 🧱 PHASE 5
-##create a dockerfile & jenkinsfile locally and push into github
+Create a dockerfile & jenkinsfile locally and push into github
 
 #sudo nano Dockerfile
 
@@ -374,13 +290,13 @@ CMD ["node", "app.js"]
 
 #sudo nano jenkinsfile
 
-pipeline {
-    agent any  // Run this pipeline on any available Jenkins agent
-
-    environment {
-        AWS_REGION = 'us-east-1'  // AWS region where ECR repo is hosted
-        ECR_REPO = '789501569955.dkr.ecr.us-east-1.amazonaws.com/nodejs-app'  // ECR repository URI
-        IMAGE_TAG = "${env.BUILD_NUMBER}"  // Use Jenkins build number as Docker image tag
+    pipeline {
+        agent any  // Run this pipeline on any available Jenkins agent
+    
+        environment {
+            AWS_REGION = 'us-east-1'  // AWS region where ECR repo is hosted
+            ECR_REPO = '789501569955.dkr.ecr.us-east-1.amazonaws.com/nodejs-app'  // ECR repository URI
+            IMAGE_TAG = "${env.BUILD_NUMBER}"  // Use Jenkins build number as Docker image tag
 
         // Inject AWS credentials stored in Jenkins credential manager
         AWS_ACCESS_KEY_ID = credentials('aws-creds')
@@ -391,7 +307,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the GitHub repository from the 'dev' branch using specified credentials
-                git branch: 'dev', credentialsId: 'github-https-creds', url: 'https://github.com/MaheshBabu-DevOps/AWS-ECS-CI-CD-Pipeline-Project.git'
+                git branch: 'dev', credentialsId: 'github-https-creds', url: '[https://github.com/Vidumukhijadhav/DevOps-Task-I.git]'
             }
         }
 
@@ -434,7 +350,6 @@ pipeline {
     }
 }
 
-
 ---
 
 #Install aws cli on local--(optional) 
@@ -465,31 +380,26 @@ Pipeline Definition: Pipeline script from SCM
 
 SCM: Git
 
-Repo URL: https://github.com/MaheshBabu-DevOps/devops-task.git
+Repo URL: [https://github.com/Vidumukhijadhav/DevOps-Task-I.git]
 
 Branch: */dev
 
 Script Path: Jenkinsfile
 
-#🧪 Run Pipeline
+🧪 Run Pipeline
 Click Build Now
 
 View Console Output
 
 ##once done pipeline  build after sucess
 
----
-
-##Verify the image
+Verify the image
 👉 AWS Console → ECR → Your Repository → Images
 ✔️ Make sure your image is there, e.g., nodejs-app:5
 
 
----
-
-
 🧱 PHASE 6
-#🏗️ ✅ ECS Deployment — Step-by-Step Guide
+ ✅ ECS Deployment — Step-by-Step Guide
 ECS
 cluster
 task
@@ -497,7 +407,7 @@ IAM-ROLES-
 service
 
 
-#✅ STEP 1: Create ECS Cluster
+✅ STEP 1: Create ECS Cluster
 
 - Go to ECS Console → Clusters
 
@@ -511,7 +421,7 @@ service
 
 - Click Create
 
-#✅ STEP 2: Create Task Definition
+✅ STEP 2: Create Task Definition
 
 - Go to ECS Console → Task Definitions → Create new
 
@@ -545,7 +455,7 @@ CPU/Memory: 256 vCPU / 512 MiB (or higher if needed)
 Click Create
 
 
-#✅ STEP 3: Create ECS Service
+✅ STEP 3: Create ECS Service
 
 - Go to ECS Console → Clusters → nodejs-cluster
 
@@ -586,7 +496,7 @@ Auto-assign public IP: ENABLED ✅
 Click Create Service
 
 
-#✅ STEP 4: Test Your App
+✅ STEP 4: Test Your App
 
 Go to your Cluster → Tasks tab
 
@@ -597,18 +507,7 @@ Scroll to Network section
 Look for Public IP under ENI details
 
 Open in browser:
-
----
-
-###Access the application
+Access the application
 http://<your-task-public-ip>:3000
-
-
----
-
-## 🔗 Connect with Me
-
-- 💼 [LinkedIn](https://linkedin.com/in/maheshbabu-devops)
-- 🛠️ [GitHub](https://github.com/MaheshBabu-DevOps)
 
 
